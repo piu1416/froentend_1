@@ -1,0 +1,41 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-customer-sidenav></app-customer-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+	  <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Payments</div>
+      <div class="page__content shadow p-3 position-relative">
+          <div class="container">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th>Payment ID</th>
+                <th>Bill ID</th>
+                <th>Customer ID</th>
+                <th>Payment Method</th>
+                <th>Bill Amount</th>
+                <th>Payment Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let payment of payments| paginate: { itemsPerPage: count.toString() , currentPage: p.toString()}">
+                <td><span>{{payment.paymentId}}</span></td>
+                <td><span>{{payment.billId}}</span></td>
+                <td><span>{{payment.customerId}}</span></td>
+                <td><span>{{payment.paymentMethod}}</span></td>
+                <td><span>₹ {{payment.billAmount}}</span></td>
+                <td><span>{{payment.paymentDate}}</span></td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="text-right">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+	</mat-drawer-content>
+  </mat-drawer-container>

@@ -1,0 +1,39 @@
+.title{
+    text-align: center;
+    padding: 10px;
+    border: 5px;
+    padding-top: 70px;
+}
+section,.card,h5,p{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: auto;  
+}
+.card{
+    background: #222;
+    border-radius: 6px;
+    padding: 25px 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-pic{
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    margin: auto;
+    border-radius: 50px;
+    border: 5px solid #28a745;
+    margin-top: 20px;
+    box-shadow: 0 10px 50px rgb(54 255 160);
+}
+.card:hover{
+    background: dodgerblue;
+    box-shadow: 5px 10px #000000;
+    
+}
+.card:hover img{
+    border: 5px solid #ffffff;
+}

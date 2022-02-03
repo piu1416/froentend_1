@@ -1,0 +1,50 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Add Bill</div>
+      <div class="page__content shadow p-3 position-relative">
+        <div class="container center">
+          <div class="row">
+            <div class="card mb-4 p-3" style="width:450px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+              <div class="card-body">
+                <form novalidate #addBillForm="ngForm" (ngSubmit)="onSubmit(addBillForm)">
+
+                  <mat-dialog-content>
+                    <div>
+                      <mat-form-field>
+                        <input matInput placeholder="Customer ID" type="number" [(ngModel)]="bill.customerId"
+                          name="customerID" #customerID="ngModel" min="1" required>
+                        <mat-error *ngIf="customerID.errors?.['required']">Customer ID is required</mat-error>
+                        <mat-error *ngIf="customerID.errors?.['min']">Customer ID can not be negative or 0</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field class="mb-2">
+                        <input matInput placeholder="Units" type="number" [(ngModel)]="bill.units" name="units"
+                          #units="ngModel" min="10" required>
+                        <mat-error *ngIf="units.errors?.['required']">Units is required</mat-error>
+                        <mat-error *ngIf="units.errors?.['min']">Units can not be less than 10</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </mat-dialog-content>
+                  <mat-dialog-actions>
+                    <span class="flex-spacer"></span>
+                    <div class=" text-center m-auto">
+                    <button class="btn btn-outline-danger m-1" routerLink="/admin-profile">Cancel</button>
+                    <button type="submit" class="btn btn-outline-primary m-1" [disabled]="addBillForm.form.invalid">Add</button>
+                    </div>
+                  </mat-dialog-actions>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

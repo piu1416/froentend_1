@@ -1,0 +1,68 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-sidenav></app-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Customers</div>
+      <div class="page__content shadow p-3 position-relative">
+          <div class="container">
+            <div class="row p-4 ">
+              <div class="col-md-6">
+                <h2>Customer List</h2>
+              </div>
+              <div class="col-md-6 float-right text-right">
+
+                <button class="btn btn-outline-info" (click)="addCustomerForm()" type="submit"><span><i class="fa fa-plus"></i></span></button>
+              </div>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Customer Type</th>
+                <th>Electricity Board ID</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let customer of customers| paginate: { itemsPerPage: count.toString() , currentPage: p.toString()}">
+                <td><span>{{customer.customerId}}</span></td>
+                <td><span>{{customer.customerName}}</span></td>
+                <td><span>{{customer.customerType}}</span></td>
+                <td><span>{{customer.electricityBoardId}}</span></td>
+                <td><span>{{customer.customerEmail}}</span></td>
+                <td><span>{{customer.customerContanctNo}}</span></td>
+                <td><span>{{customer.customerAddress}}</span></td>
+                <td class="d-flex">
+                  <button type="button" style='margin-right:16px' class="btn btn-outline-info">
+                    <a mat-list-item (click)="updateProfileForCustomer(customer.customerId)">
+                      <mat-icon>edit</mat-icon>
+                    </a>
+                  </button>
+                  <button type="button" class="btn btn-outline-danger">
+                    <a mat-list-item (click)="deleteCustomer(customer.customerId)">
+                      <mat-icon color="warn">delete_outline</mat-icon>
+                    </a>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="text-right">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+	</mat-drawer-content>
+  </mat-drawer-container>
+
+

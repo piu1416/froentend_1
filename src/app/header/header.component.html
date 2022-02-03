@@ -1,0 +1,12 @@
+<mat-toolbar class="color" style="position: sticky;top: 0;">
+  <span class="px-2"><img class="logo" src="/assets/images/logo.png" ></span>
+  <a mat-button  href="#home"> Home</a>
+  <a mat-button  href="#about"> About</a>
+  <a mat-button  href="#feature"> Services</a>
+  <a mat-button  href="#team"> Team</a>
+  <a mat-button  href="#contact"> Contact</a>
+  <span class="flex-spacer"></span>
+  <a mat-button *ngIf="!isLoggedIn" (click)="openLoginForm()" ><i class='fas fa-sign-in-alt'></i> Login</a>
+  <a mat-button *ngIf="!isLoggedIn" (click)="openSignupForm()" ><span class="fa fa-address-card fa-lg"></span> Signup</a>
+  <a mat-button *ngIf="isLoggedIn" (click)="openDashboard()" ><mat-icon>dashboard</mat-icon> Dashboard</a>
+</mat-toolbar>

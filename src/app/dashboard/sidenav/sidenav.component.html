@@ -1,0 +1,33 @@
+
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/images/logo.png" alt="Company Logo" height="80%" width="80%" />
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">SERVICES</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-profile">
+    <mat-icon>dashboard</mat-icon> Profile
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/updateProfile">
+    <mat-icon>edit</mat-icon> Update Profile
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/changePassword">
+    <mat-icon>lock</mat-icon> Change Password
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-customers">
+    <mat-icon>supervisor_account</mat-icon> Customers
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-bills">
+    <mat-icon>receipt</mat-icon> Bills
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/addBill">
+    <mat-icon>add_circle_outline</mat-icon> Add a Bill
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/updatePaymentStatus">
+    <mat-icon>update</mat-icon> Update Payment Status 
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-payments">
+    <mat-icon>payment</mat-icon> Payments
+  </a>
+</mat-nav-list>

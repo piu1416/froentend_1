@@ -1,0 +1,52 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-customer-sidenav></app-customer-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+	  <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Make Payment</div>
+      <div class="page__content shadow p-3 position-relative">
+        <div class="container center">
+          <div class="row">
+            <div class="card mb-4 p-3" style="width:450px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+              <div class="card-body">
+                <form novalidate #paymnetForm="ngForm" (ngSubmit)="onSubmit(paymnetForm)" >
+          
+                  <mat-dialog-content>
+                    <div>
+                        <mat-form-field>
+                          <input matInput placeholder="Bill ID" type="number" [(ngModel)]="payment.billId" name="billId" #billId="ngModel" min="1" required>
+                          <mat-error *ngIf="billId.errors?.['required']">Bill ID is required</mat-error>
+                          <mat-error *ngIf="billId.errors?.['min']">Bill ID can not be negative or 0</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field appearance="outline">
+                          <mat-label class= "text-muted">Payment Method</mat-label>
+                          <mat-select [(ngModel)]="payment.paymentMethod" name="paymentMethod" required>
+                            <mat-option value="UPI">UPI</mat-option>
+                            <mat-option value="Debit Card">Debit Card</mat-option>
+                            <mat-option value="Credit Card">Credit Card</mat-option>
+                            <mat-option value="Net Banking">Net Banking</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                  </mat-dialog-content>
+                  <mat-dialog-actions>
+                    <span class="flex-spacer"></span>
+                    <div class=" text-center m-auto">
+                    <button class="btn btn-outline-danger m-1" routerLink="/customer-profile">Cancel</button>
+                    <button type="submit" class="btn btn-outline-primary m-1" [disabled]="paymnetForm.form.invalid">Add</button>
+                  </div>
+                  </mat-dialog-actions>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+  </mat-drawer-content>
+</mat-drawer-container>

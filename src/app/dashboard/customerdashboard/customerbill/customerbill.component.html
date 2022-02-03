@@ -1,0 +1,57 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-customer-sidenav></app-customer-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+	  <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Bills</div>
+      <div class="page__content shadow p-3 position-relative">
+          <div class="container">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Cust.ID</th>
+                <th>Name</th>
+                <th>Cust.Type</th>
+                <th>E-Board ID</th>
+                <th>Address</th>
+                <th>MM/YY</th>
+                <th>Units</th>
+                <th>Amount</th>
+                <th>Due Date</th>
+                <th>Payment Status</th>
+                <th>Payment ID</th>
+                <th>Payment Date</th>
+                <th>Payment Method</th> 
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let bill of bills| paginate: { itemsPerPage: count.toString() , currentPage: p.toString()}">
+                <td><span>{{bill.billId}}</span></td>
+                <td><span>{{bill.customerId}}</span></td>
+                <td><span>{{bill.customerName}}</span></td>
+                <td><span>{{bill.customerType}}</span></td>
+                <td><span>{{bill.electricityBoardId}}</span></td>
+                <td><span>{{bill.customerAddress}}</span></td>
+                <td><span>{{bill.monthAndYearOfBill}}</span></td>
+                <td><span>{{bill.units}}</span></td>
+                <td><span>₹ {{bill.billAmount}}</span></td>
+                <td><span>{{bill.duePaymentDate}}</span></td>
+                <td><span>{{bill.paymentStatus}}</span></td>
+                <td><span>{{bill.paymentId}}</span></td>
+                <td><span>{{bill.paymentDate}}</span></td>
+                <td><span>{{bill.paymentMethod}}</span></td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="text-right">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+	</mat-drawer-content>
+  </mat-drawer-container>

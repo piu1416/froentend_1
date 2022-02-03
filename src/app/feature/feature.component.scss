@@ -1,0 +1,42 @@
+.title{
+    text-align: center;
+    padding: 10px;
+    border: 5px;
+    padding-top: 70px;
+}
+.bill-service-img{
+    width: 100px;
+    align-items: center;
+    height: 100px;
+    margin: auto;
+    padding: 15px 10px 11px 9px;
+    background: gold;
+    border-radius: 50px;
+    
+}
+.bill-service-img1{
+    width: 100px;
+    align-items: center;
+    height: 100px;
+    margin: auto;
+
+    border-radius: 50px;
+    
+}
+section .card{
+    box-shadow: 5px 10px #949494;
+}
+section,.card,h5,p{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+    
+    
+}
+section,.services{
+    background: #d2e6f7;
+}
+section .card:hover{
+    background: lightblue;
+    box-shadow: 5px 10px #000000;
+    
+}

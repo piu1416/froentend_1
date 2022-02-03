@@ -1,0 +1,110 @@
+<div class="container">
+
+  <div class="row ">
+
+
+    <div class="col-lg-5 col-md-5 col-sm-12 m-auto">
+      <img src="../../assets/images/signup.jpg" class="img-responsive" alt="yes">
+    </div>
+
+    <div class="col-lg-7 col-md-7 col-sm-12">
+      <form *ngIf='customer' novalidate [formGroup]="customerForm" #signupForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field appearance="outline">
+            <mat-label class= "text-muted">Select type</mat-label>
+            <mat-select formControlName="customerType">
+              <mat-option value="HOUSEHOLD">Household</mat-option>
+              <mat-option value="COMMERCIAL">Commercial</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="electricityBoardId" placeholder="Electricity Board Id" type="number" min='1' required>
+            <mat-error *ngIf="customerForm.get('electricityBoardId').hasError('required') && customerForm.get('electricityBoardId').touched">BoardID is required</mat-error>
+            <mat-error *ngIf="customerForm.get('electricityBoardId').hasError('min') && customerForm.get('electricityBoardId').touched">BoardID cannot be negative or 0</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- *********************************** -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="customerName" placeholder="Fullname" type="text" minlength="3" pattern='[a-zA-Z ]*' required>
+            <mat-error *ngIf="customerForm.get('customerName').hasError('required') && customerForm.get('customerName').touched">Fullname is required</mat-error>
+            <mat-error *ngIf="customerForm.get('customerName').hasError('minlength') && customerForm.get('customerName').touched">Name must be at least 3 characters</mat-error>
+            <mat-error *ngIf="customerForm.get('customerName').hasError('pattern') && customerForm.get('customerName').touched">Please enter a valid name</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="customerEmail" placeholder="Email" type="email" email required>
+            <mat-error *ngIf="customerForm.get('customerEmail').hasError('required') && customerForm.get('customerEmail').touched">Email is required</mat-error>
+            <mat-error *ngIf="customerForm.get('customerEmail').hasError('email') && customerForm.get('customerEmail').touched">Please enter a valid Email</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- *********************************** -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="customerContanctNo" placeholder="Contanct No" type="text" pattern='(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})' maxlength="13" required>
+            <mat-error *ngIf="customerForm.get('customerContanctNo').hasError('required') && customerForm.get('customerContanctNo').touched">Contact number is required</mat-error>
+            <mat-error *ngIf="customerForm.get('customerContanctNo').hasError('pattern') && customerForm.get('customerContanctNo').touched">Must be in +91-XXXX-XXXXXX format</mat-error>
+            <mat-error *ngIf="customerForm.get('customerContanctNo').hasError('maxlength') && customerForm.get('customerContanctNo').touched">Please enter a valid Contact no.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="customerAddress" placeholder="Address" type="text" minlength="4" required>
+            <mat-error *ngIf="customerForm.get('customerAddress').hasError('required') && customerForm.get('customerAddress').touched">Address is required</mat-error>
+            <mat-error *ngIf="customerForm.get('customerAddress').hasError('minlength') && customerForm.get('customerAddress').touched">Address must be at least 4 characters</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field appearance="outline">
+            <mat-label >Security Question</mat-label>
+            <mat-select formControlName="customerQuestion">
+              <mat-option value="What is your nick name?">What is your nick name?</mat-option>
+              <mat-option value="What is your favourite pet?">What is your favourite pet?</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="customerAnswer" placeholder="Security Answer" type="text" minlength="3"  required>
+            <mat-error *ngIf="customerForm.get('customerAnswer').hasError('required') && customerForm.get('customerAnswer').touched">Security answer is required</mat-error>
+            <mat-error *ngIf="customerForm.get('customerAnswer').hasError('minlength') && customerForm.get('customerAnswer').touched">Answer must be at least 3 characters</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="password" placeholder="Password" type="password" minlength="5" required>
+            <mat-error *ngIf="customerForm.get('password').hasError('required') && customerForm.get('password').touched">Password is required</mat-error>
+            <mat-error *ngIf="customerForm.get('password').hasError('minlength') && customerForm.get('password').touched">Password must be at least 5 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <mat-form-field>
+            <input matInput formControlName="confirmPassword" placeholder="Confirm Password" type="password" minlength="5"  required>
+            <mat-error *ngIf="customerForm.get('password').hasError('required') && customerForm.get('password').touched">Please confirm the password!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row response-div">
+        <mat-dialog-actions>
+          <span class="flex-spacer"></span>
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="signupForm.form.invalid">Signup</button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

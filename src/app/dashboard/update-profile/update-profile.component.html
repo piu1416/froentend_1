@@ -1,0 +1,61 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-sidenav></app-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+	  <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Update Profile</div>
+      <div class="page__content shadow p-3 position-relative">
+<div class="container center" >
+  <div class="row">
+    <div class="card mb-4 p-3" style="width:450px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+      <div class="card-body">
+    
+      <form novalidate #updateProfileForm="ngForm" (ngSubmit)="onSubmit(updateProfileForm)" >
+  
+        <mat-dialog-content>
+          <div class="">
+              <mat-form-field>
+                <input class="" matInput placeholder="Email address" type="text" [(ngModel)]="user.email" name="email" #email="ngModel" email="true" required>
+                <mat-error *ngIf="email.errors?.['required']">Email address is required</mat-error>
+                <mat-error *ngIf="email.errors?.['email']">Please enter a valid Email</mat-error>
+              </mat-form-field>
+            </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Name" type="text" [(ngModel)]="user.name" name="name" #name="ngModel" minlength="3" pattern='[a-zA-Z ]*' required>
+              <mat-error *ngIf="name.errors?.['required']">Name is required</mat-error>
+              <mat-error *ngIf="name.errors?.['minlength']">Name must be at least 3 characters</mat-error>
+              <mat-error *ngIf="name.errors?.['pattern']">Please enter a valid name</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="mb-2">
+              <input matInput placeholder="Contact Number" type="text" [(ngModel)]="user.contanctNo" name="contanctNo" #contanctNo="ngModel"
+              pattern='(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})' maxlength="13" required>
+              <mat-error *ngIf="contanctNo.errors?.['required']">Contact number is required</mat-error>
+              <mat-error *ngIf="contanctNo.errors?.['pattern']">Must be in +91-XXXX-XXXXXX format</mat-error>
+              <mat-error *ngIf="contanctNo.errors?.['maxlength']">Please enter a valid Contact no.</mat-error>
+            </mat-form-field>
+          </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+          <div class=" text-center m-auto">
+          
+          <button  class="btn btn-outline-danger m-1" routerLink="/admin-profile">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary m-1"  [disabled]="updateProfileForm.form.invalid">Update</button>
+        
+        </div>
+      </mat-dialog-actions>
+      </form>
+    </div>
+  </div>
+
+  </div>
+  </div>
+</div>
+</div>
+</mat-drawer-content>
+</mat-drawer-container>

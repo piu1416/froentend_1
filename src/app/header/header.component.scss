@@ -1,0 +1,38 @@
+.active{
+  background: rgba(181, 231, 65, 0.596);
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.color {
+  background-image: linear-gradient(to bottom right, rgb(66, 165, 135), rgba(61, 84, 160, 0.74));
+  z-index: 10;
+}
+.mat-button{
+  font-size: 15px;
+  color: cornsilk;
+}
+
+.logo{
+  border-radius: 12px;
+  background: #343a40c7;
+  padding: 12px;
+  height:85px;
+  width:99px;
+}
+
+.img-style{
+  width: 100%;
+  height:100%;
+}
+a:hover {
+  color: #020202;
+   text-decoration: none; 
+   border-radius: 25px;
+  background: #ffd740;
+}
+.color{
+  background: #020202;
+}

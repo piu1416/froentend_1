@@ -1,0 +1,43 @@
+<div class="container" >
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-12 responsive-div">
+      <img src="../../assets/images/login-pic (2).png" alt="" class="img-size" width="auto" height="auto" >
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 m-auto responsive-div">
+      <h2 class="text-center font-weight-bold">Login</h2>
+      <br>
+      <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+
+        <mat-dialog-content  >
+          <div style= "padding-left: 29px">
+            <mat-form-field>
+              <input matInput placeholder="Email" type="text" [(ngModel)]="user.email" name="email" #email="ngModel" email="true" required>
+              <mat-error *ngIf="email.errors?.['required']">Email is required</mat-error>
+              <mat-error *ngIf="email.errors?.['email']">Please enter a valid email!</mat-error>
+            </mat-form-field>
+          </div>
+          <div style= "padding-left: 29px">
+            <mat-form-field>
+              <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+              <mat-error *ngIf="password.errors?.['required']">Password is required</mat-error>
+            </mat-form-field>
+          </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+          <span class="flex-spacer"></span>
+          <button  mat-dialog-close class="btn btn-outline-danger mr-2">Cancel</button>
+          <button type="submit" mat-dialog-close class="btn btn-outline-primary text-floral-white" [disabled]="loginForm.form.invalid">Login</button>
+        </mat-dialog-actions>
+        <mat-dialog-actions>
+          <span class="flex-spacer"></span>
+          <div class="row m-auto d-block text-center" style="padding: 20px;">
+            <a class="font-weight-normal text-center" (click)="onForget()">Forget Password?</a>
+          </div>
+        <div class="row m-auto d-block text-center">
+          <a class="font-weight-normal text-center" (click)="onNewUser()">New User?  </a>
+        </div>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </div>
+</div>
